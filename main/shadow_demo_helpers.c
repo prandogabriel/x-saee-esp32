@@ -1005,7 +1005,7 @@ int32_t DisconnectMqttSession(void)
 
 int32_t SubscribeToTopic(const char *pTopicFilter,
                          uint16_t topicFilterLength,
-                        MQTTEventCallback_t eventCallback)
+                         MQTTEventCallback_t eventCallback)
 {
     int returnStatus = EXIT_SUCCESS;
     MQTTStatus_t mqttStatus;
@@ -1058,8 +1058,23 @@ int32_t SubscribeToTopic(const char *pTopicFilter,
                                         globalSubscribePacketIdentifier,
                                         MQTT_PROCESS_LOOP_TIMEOUT_MS);
 
+        // Variables used in this example.
+        MQTTStatus_t status;
 
-        
+        while (true)
+        {
+            status = MQTT_ProcessLoop(pMqttContext);
+
+            if (status != MQTTSuccess)
+            {
+                // Determine the error. It's possible we might need to disconnect
+                // the underlying transport connection.
+            }
+            else
+            {
+                // Other application functions.
+            }
+        }
     }
 
     return returnStatus;
