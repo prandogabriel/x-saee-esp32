@@ -117,29 +117,6 @@ static void eventCallback(MQTTContext_t *pMqttContext,
     }
 }
 
-/*-----------------------------------------------------------*/
-
-/**
- * @brief Entry point of shadow demo.
- *
- * This main function demonstrates how to use the macros provided by the
- * Device Shadow library to assemble strings for the MQTT topics defined
- * by AWS IoT Device Shadow. Named shadow topic strings differ from unnamed
- * ("Classic") topic strings as indicated by the tokens within square brackets.
- *
- * The main function uses these macros for topics to subscribe to:
- * - SHADOW_TOPIC_STR_UPDATE_DELTA for "$aws/things/thingName/shadow[/name/shadowname]/update/delta"
- * - SHADOW_TOPIC_STR_UPDATE_ACC for "$aws/things/thingName/shadow[/name/shadowname]/update/accepted"
- * - SHADOW_TOPIC_STR_UPDATE_REJ for "$aws/things/thingName/shadow[/name/shadowname]/update/rejected"
- *
- * It also uses these macros for topics to publish to:
- * - SHADOW_TOPIC_STR_DELETE for "$aws/things/thingName/shadow[/name/shadowname]/delete"
- * - SHADOW_TOPIC_STR_UPDATE for "$aws/things/thingName/shadow[/name/shadowname]/update"
- *
- * The helper functions this demo uses for MQTT operations have internal
- * loops to process incoming messages. Those are not the focus of this demo
- * and therefore, are placed in a separate file shadow_demo_helpers.c.
- */
 int aws_iot_demo_main(int argc,
                       char **argv)
 {
@@ -157,7 +134,7 @@ int aws_iot_demo_main(int argc,
         returnStatus = EstablishMqttSession(eventCallback);
         if (returnStatus == EXIT_FAILURE)
         {
-            LogWarn(("Error on connect iteration %d. Retrying...", iterations));
+            LogWarn(("Error on connect. Retrying..."));
             sleep(5);
         }
 
@@ -165,8 +142,7 @@ int aws_iot_demo_main(int argc,
 
     if (returnStatus == EXIT_SUCCESS)
     {
-        /* Log message indicating the demo completed successfully. */
-        LogInfo(("Demo completed successfully."));
+        LogInfo(("IoT code completed successfully."));
     }
 
     return returnStatus;
