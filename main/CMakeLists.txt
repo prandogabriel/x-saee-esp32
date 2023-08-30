@@ -1,7 +1,7 @@
 set(COMPONENT_SRCS
 	"app_main.c"
-	"shadow_demo_main.c"
-	"shadow_demo_helpers.c"
+	"iot_helpers.c"
+	"iot_main.c"
 	)
 
 set(COMPONENT_ADD_INCLUDEDIRS

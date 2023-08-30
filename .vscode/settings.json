@@ -1,0 +1,5 @@
+{
+    "files.associations": {
+        "iot_helpers.h": "c"
+    }
+}

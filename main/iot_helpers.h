@@ -20,11 +20,11 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef MQTT_DEMO_HELPERS_H_
-#define MQTT_DEMO_HELPERS_H_
+#ifndef IOT_HELPERS_H_
+#define IOT_HELPERS_H_
 
 /* Include Demo Config as the first non-system header. */
-#include "demo_config.h"
+#include "config.h"
 
 /* MQTT API header. */
 #include "core_mqtt.h"
@@ -62,4 +62,4 @@ void HandleOtherIncomingPacket( MQTTPacketInfo_t * pPacketInfo,
 int32_t SubscribeToTopic( const char * pTopicFilter,
                           uint16_t topicFilterLength, MQTTEventCallback_t eventCallback );
 
-#endif /* ifndef SHADOW_DEMO_HELPERS_H_ */
+#endif /* ifndef IOT_HELPERS_H_ */

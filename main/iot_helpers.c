@@ -21,7 +21,7 @@
  */
 
 /**
- * @file shadow_demo_helpers.c
+ * @file iot_helpers.c
  *
  * @brief This file provides helper functions used by shadow demo application to
  * do MQTT operation based on mutually authenticated TLS connection.
@@ -39,7 +39,7 @@
 #include <time.h>
 
 /* Shadow includes */
-#include "shadow_demo_helpers.h"
+#include "iot_helpers.h"
 
 /* POSIX includes. */
 #include <unistd.h>

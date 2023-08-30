@@ -16,7 +16,7 @@
 #include "esp_netif.h"
 #include "protocol_examples_common.h"
 
-int aws_iot_demo_main( int argc, char ** argv );
+int aws_iot_main( int argc, char ** argv );
 
 #include "esp_log.h"
 
@@ -55,5 +55,5 @@ void app_main()
      */
     ESP_ERROR_CHECK(example_connect());
 
-    aws_iot_demo_main(0,NULL);
+    aws_iot_main(0,NULL);
 }

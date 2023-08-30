@@ -21,25 +21,25 @@
  */
 
 /**
- * @file shadow_demo_main.c
+ * @file iot_demo_main.c
  *
  * @brief Demo for showing how to use the Device Shadow library's API. This version
  * of Device Shadow API provide macros and helper functions for assembling MQTT topics
  * strings, and for determining whether an incoming MQTT message is related to a
  * device shadow. The shadow can be either the classic shadow or a named shadow. Change
- * #SHADOW_NAME to select the shadow. The Device Shadow library does not depend on a MQTT library,
- * therefore the code for MQTT connections are placed in another file (shadow_demo_helpers.c)
+ * #iot_NAME to select the shadow. The Device Shadow library does not depend on a MQTT library,
+ * therefore the code for MQTT connections are placed in another file (iot_demo_helpers.c)
  * to make it easy to read the code using Device Shadow library.
  *
  * This example assumes there is a powerOn state in the device shadow. It does the
  * following operations:
- * 1. Establish a MQTT connection by using the helper functions in shadow_demo_helpers.c.
+ * 1. Establish a MQTT connection by using the helper functions in iot_demo_helpers.c.
  * 2. Assemble strings for the MQTT topics of device shadow, by using macros defined by the Device Shadow library.
- * 3. Subscribe to those MQTT topics by using helper functions in shadow_demo_helpers.c.
- * 4. Publish a desired state of powerOn by using helper functions in shadow_demo_helpers.c.  That will cause
+ * 3. Subscribe to those MQTT topics by using helper functions in iot_demo_helpers.c.
+ * 4. Publish a desired state of powerOn by using helper functions in iot_demo_helpers.c.  That will cause
  * a delta message to be sent to device.
  * 5. Handle incoming MQTT messages in eventCallback, determine whether the message is related to the device
- * shadow by using a function defined by the Device Shadow library (Shadow_MatchTopicString). If the message is a
+ * shadow by using a function defined by the Device Shadow library (iot_MatchTopicString). If the message is a
  * device shadow delta message, set a flag for the main function to know, then the main function will publish
  * a second message to update the reported state of powerOn.
  * 6. Handle incoming message again in eventCallback. If the message is from update/accepted, verify that it
@@ -56,10 +56,10 @@
 #include <inttypes.h>
 
 /* shadow demo helpers header. */
-#include "shadow_demo_helpers.h"
+#include "iot_helpers.h"
 
 /* Shadow config include. */
-#include "shadow_config.h"
+#include "config.h"
 
 /* SHADOW API header. */
 #include "shadow.h"
@@ -87,7 +87,7 @@ static void eventCallback(MQTTContext_t *pMqttContext,
 /*-----------------------------------------------------------*/
 
 /* This is the callback function invoked by the MQTT stack when it receives
- * incoming messages. This function demonstrates how to use the Shadow_MatchTopicString
+ * incoming messages. This function demonstrates how to use the iot_MatchTopicString
  * function to determine whether the incoming message is a device shadow message
  * or not. If it is, it handles the message depending on the message type.
  */
@@ -117,7 +117,7 @@ static void eventCallback(MQTTContext_t *pMqttContext,
     }
 }
 
-int aws_iot_demo_main(int argc,
+int aws_iot_main(int argc,
                       char **argv)
 {
     int returnStatus = EXIT_FAILURE;
