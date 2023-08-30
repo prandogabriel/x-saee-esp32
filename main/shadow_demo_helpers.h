@@ -68,7 +68,7 @@ int32_t DisconnectMqttSession( void );
  * EXIT_FAILURE otherwise.
  */
 int32_t SubscribeToTopic( const char * pTopicFilter,
-                          uint16_t topicFilterLength );
+                          uint16_t topicFilterLength, MQTTEventCallback_t eventCallback );
 
 /**
  * @brief Sends an MQTT UNSUBSCRIBE to unsubscribe from the shadow

@@ -119,8 +119,8 @@
  *
  * This is the example predefine thing name and could be compiled in ROM code.
  */
-#define THING_NAME           CONFIG_MQTT_CLIENT_IDENTIFIER
-
+#define THING_NAME           "saee"
+// #define THING_NAME           CONFIG_MQTT_CLIENT_IDENTIFIER
 /**
  * @brief The length of #THING_NAME.
  */
@@ -131,9 +131,10 @@
  *
  * Defaults to unnamed "Classic" shadow. Change to a custom string to use a named shadow.
  */
-#ifndef SHADOW_NAME
-    #define SHADOW_NAME    SHADOW_NAME_CLASSIC
-#endif
+#define SHADOW_NAME "luz-gabriel"
+// #ifndef SHADOW_NAME
+//     #define SHADOW_NAME    SHADOW_NAME_CLASSIC
+// #endif
 
 /**
  * @brief The length of #SHADOW_NAME.
