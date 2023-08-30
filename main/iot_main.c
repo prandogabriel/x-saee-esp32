@@ -58,6 +58,9 @@
 /* shadow demo helpers header. */
 #include "iot_helpers.h"
 
+/* shadow light header. */
+#include "light.h"
+
 /* Shadow config include. */
 #include "config.h"
 
@@ -110,6 +113,9 @@ static void eventCallback(MQTTContext_t *pMqttContext,
     {
         assert(pDeserializedInfo->pPublishInfo != NULL);
         LogInfo(("pPublishInfo->pTopicName:%s.", pDeserializedInfo->pPublishInfo->pTopicName));
+
+        Toggle_light();
+
     }
     else
     {

@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "iot_helpers.h": "c"
+        "iot_helpers.h": "c",
+        "light.h": "c"
     }
 }

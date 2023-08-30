@@ -2,6 +2,7 @@ set(COMPONENT_SRCS
 	"app_main.c"
 	"iot_helpers.c"
 	"iot_main.c"
+	"light.c"
 	)
 
 set(COMPONENT_ADD_INCLUDEDIRS

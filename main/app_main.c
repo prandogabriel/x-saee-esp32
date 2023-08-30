@@ -16,11 +16,30 @@
 #include "esp_netif.h"
 #include "protocol_examples_common.h"
 
-int aws_iot_main( int argc, char ** argv );
+#include "light.h"
+
+int aws_iot_main(int argc, char **argv);
 
 #include "esp_log.h"
 
 static const char *TAG = "SHADOW_EXAMPLE";
+// #define BLINK_GPIO GPIO_NUM_2
+
+// static uint8_t s_led_state = 0;
+// static const char *TAG = "SHADOW_EXAMPLE";
+
+// static void configure_led(void)
+// {
+//     gpio_reset_pin(BLINK_GPIO);
+//     /* Set the GPIO as a push/pull output */
+//     gpio_set_direction(BLINK_GPIO, GPIO_MODE_OUTPUT);
+// }
+
+// static void blink_led(void)
+// {
+//     /* Set the GPIO level according to the state (LOW or HIGH)*/
+//     gpio_set_level(BLINK_GPIO, s_led_state);
+// }
 
 /*
  * Prototypes for the demos that can be started from this project.  Note the
@@ -30,14 +49,15 @@ static const char *TAG = "SHADOW_EXAMPLE";
 void app_main()
 {
     ESP_LOGI(TAG, "[APP] Startup..");
-    ESP_LOGI(TAG, "[APP] Free memory: %"PRIu32" bytes", esp_get_free_heap_size());
+    ESP_LOGI(TAG, "[APP] Free memory: %" PRIu32 " bytes", esp_get_free_heap_size());
     ESP_LOGI(TAG, "[APP] IDF version: %s", esp_get_idf_version());
 
     esp_log_level_set("*", ESP_LOG_INFO);
-    
+
     /* Initialize NVS partition */
     esp_err_t ret = nvs_flash_init();
-    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND)
+    {
         /* NVS partition was truncated
          * and needs to be erased */
         ESP_ERROR_CHECK(nvs_flash_erase());
@@ -45,7 +65,7 @@ void app_main()
         /* Retry nvs_flash_init */
         ESP_ERROR_CHECK(nvs_flash_init());
     }
-    
+
     ESP_ERROR_CHECK(esp_netif_init());
     ESP_ERROR_CHECK(esp_event_loop_create_default());
 
@@ -55,5 +75,7 @@ void app_main()
      */
     ESP_ERROR_CHECK(example_connect());
 
-    aws_iot_main(0,NULL);
+    Configure_light();
+
+    aws_iot_main(0, NULL);
 }
